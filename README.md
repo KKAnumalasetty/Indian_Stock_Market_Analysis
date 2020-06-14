@@ -13,4 +13,4 @@ I explained financial analysis in a video and shared it on youtube, click on the
 
 ![NIFTY 50](Images/Index_Rolling_CAGR_Analysis_Tool_1.JPG)
 ![NIFTY 50](Images/Index_Rolling_CAGR_Analysis_Tool_2.JPG)
-![NIFTY 50](Images/Index_Rolling_CAGR_Analysis_Tool_2.JPG)
+![NIFTY 50](Images/Index_Rolling_CAGR_Analysis_Tool_3.JPG)
