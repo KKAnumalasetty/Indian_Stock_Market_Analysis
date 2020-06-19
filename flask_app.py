@@ -25,7 +25,7 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 
-app = dash.Dash(__name__,server=server,routes_pathname_prefix='/dash/')
+app = dash.Dash(__name__,server=server,routes_pathname_prefix='/invest/')
 
 
 def get_index_pe_ratio_data(index_name):
@@ -54,7 +54,7 @@ def get_index_pe_ratio_data(index_name):
 
     print('index_name = ',index_name,'\n',glued_data.dtypes,'\n',glued_data.shape,'\n ***********************')
 
-
+    glued_data['Date'] = pd.to_datetime(glued_data['Date'], infer_datetime_format=True)
     glued_data['Mean_PE'] = glued_data['P/E'].mean()
 
     glued_data['1std_dev_PE'] = glued_data['Mean_PE']+glued_data['P/E'].std()
@@ -71,6 +71,8 @@ def get_index_pe_ratio_data(index_name):
     # glued_data['Mean_PE'] = glued_data['P/E'].mean()
     # glued_data['Mean_PE'] = glued_data['P/E'].mean()
     # glued_data['Mean_PE'] = glued_data['P/E'].mean()
+    glued_data.sort_values(['Date'],ascending=[True],inplace=True)
+    glued_data.reset_index(drop=True,inplace=True)
 
     return glued_data
 
@@ -148,6 +150,16 @@ def plot_PE_Ratio_Chart(index_name):
             ])
                         )
     )
+
+
+    fig.update_layout(title={
+        'text': index_name+" P/E ratio analysis based on historical values",
+        'y':0.9,
+        'x':0.5,
+        'xanchor': 'center',
+        'yanchor': 'top'},
+        plot_bgcolor='rgb(230,230,230)')
+
     return fig
 
 
@@ -180,9 +192,9 @@ def update_pe_ratio_chart(value):
     if value=="NIFTY 50":
         return plot_PE_Ratio_Chart("NIFTY_50_PE_RATIO")
     elif value=="NIFTY Bank":
-        return plot_PE_Ratio_Chart("NIFTY Bank PE Ratio")
+        return plot_PE_Ratio_Chart("NIFTY_BANK_PE_RATIO")
     elif value=="NIFTY Pharma":
-        return plot_PE_Ratio_Chart("NIFTY Pharma PE Ratio")
+        return plot_PE_Ratio_Chart("NIFTY_PHARMA_PE_RATIO")
     else:
         return plot_PE_Ratio_Chart("NIFTY_50_PE_RATIO")
 
