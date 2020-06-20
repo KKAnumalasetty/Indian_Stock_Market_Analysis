@@ -1,1 +1,1 @@
-web: gunicorn simulation_app:server
+web: gunicorn Investment_Analysis_Dash_App:server
