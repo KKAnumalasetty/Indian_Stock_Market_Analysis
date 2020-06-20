@@ -1,0 +1,8 @@
+gunicorn>=19.7.1
+glob
+pandas==0.25.1
+plotly==4.6.0
+dash==1.13.3
+dash_core_components==1.10.1
+dash_html_components==1.0.3
+dash_bootstrap_components==0.10.2
